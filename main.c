@@ -10,7 +10,7 @@ const char* passwdHash(char * passwd) {
 }
 struct db { // our database struct
     char name[50];
-    char userid[10];
+    char userid[25];
     char passwd[25];
 };
 
@@ -18,6 +18,7 @@ int main() {
     printf("Enter the number of users to add to the database: ");
     int n; scanf("%d", &n);
     struct db user[n];  // create an array of structs
+    
     // create a string array with size 'n' using malloc
     char *textPasswd[n];
     for (int i=0; i<n; i++) {
@@ -25,11 +26,13 @@ int main() {
     }
 
     printf("\nEnter the credentials for each user >>");
-
     for (int i=0; i<n; i++) {
-        printf("\n[upto 50 Chars] First Name: ");   scanf("%s", user[i].name);
-        printf("[upto 10 Chars] UserID: ");         scanf("%s", user[i].userid); 
-        printf("[upto 25 Chars] Password: ");       scanf("%s", textPasswd[i]);
+        printf("\n[upto 50 Chars] First Name: ");
+        scanf("%s", user[i].name);
+        printf("[upto 25 Chars] UserID: ");   
+        scanf("%s", user[i].userid); 
+        printf("[upto 25 Chars] Password: ");
+        scanf("%s", textPasswd[i]);
     }
      
     for (int i=0; i<n; i++)
@@ -38,7 +41,7 @@ int main() {
         free(textPasswd[i]); // free each element from the heap
     free(textPasswd); // finally, free the entire array
 
-    char uid[10]; char pw[25];
+    char uid[25]; char pw[25];
     printf("\nUserID to be verified: "); scanf("%s", uid); 
     printf("Enter the password: "); scanf("%s", pw);
     for (int i=0; i<n; i++) { // Credential verification
