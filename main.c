@@ -1,6 +1,7 @@
 /* <Define purpose here> and LOC (excluding comments); It can be argued that for security reasons we don't want to store passwords in plain text and the userids in the same block of memory. So, dynamically allocate a new array that stores our passwords temprarily, runs it through the hash function, stores the hash in our struct database and then imediately free() the memory of its contents. */
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 // a basic password hashing function - rotate each character by 1 ASCII value
 const char* passwdHash(char * passwd) {  
